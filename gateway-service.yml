@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zona: http://localhost:8671/eureka
+    instance:
+      hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+      routes:
+        - id: client-service
+          uri: lb://client-service
+          predicates:
+            - path=/clients/**
+        - id: image-service
+          uri: lb://image-service
+          predicates:
+            - Path=/images/**
