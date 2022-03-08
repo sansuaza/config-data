@@ -15,13 +15,13 @@ spring:
     gateway:
       discovery:
         locator:
-          enable: true
+           enable: true
       routes:
-        - id: client-service
-          uri: lb://client-service
+        - id: CLIENT-SERVICE
+          uri: lb://CLIENT-SERVICE
           predicates:
             - path=/clients/**
-        - id: image-service
-          uri: lb://image-service
+        - id: IMAGE-SERVICE
+          uri: lb://IMAGE-SERVICE
           predicates:
             - Path=/images/**
